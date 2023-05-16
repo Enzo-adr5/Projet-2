@@ -1,0 +1,611 @@
+$main-color: #383637;
+$secondary-color: #f8e8d8;
+$accent-color: #bf0404;
+$win: rgb(0, 190, 0);
+$grid-map: 20;
+
+:root {
+  //modification parametre par defaut de Tooltip
+  --rt-opacity: 1;
+}
+* {
+  font-family: "Alkatra", cursive;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $main-color;
+  color: $secondary-color;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  .Home {
+    background-image: url(assets/parchemin.png);
+    background-position: bottom;
+    background-size: 50rem;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .login {
+      padding-bottom: 1.5rem;
+    }
+    .Logo {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+    }
+    .Yokai {
+      width: 20rem;
+      display: flex;
+      justify-content: center;
+      margin: 0%;
+    }
+    .ID {
+      display: flex;
+      justify-content: center;
+      padding-top: 0.5rem;
+    }
+    .marque-ver {
+      max-width: 22em;
+      height: 14em;
+      margin: 2em auto;
+
+      overflow: hidden;
+    }
+    .marque-ver > div {
+      padding: 2em;
+      padding-top: 6em; /* meme que height du parent */
+      animation: defilement-ver 60s infinite linear;
+      cursor: pointer;
+    }
+    .marque-ver:hover > div {
+      animation-play-state: paused;
+    }
+    .msg {
+      font-size: 1.5em;
+      line-height: 1.5em;
+    }
+
+    @keyframes defilement-ver {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(0, -100%, 0);
+      }
+    }
+    button {
+      float: right;
+    }
+  }
+}
+.tooltip {
+  background-color: $main-color;
+  color: $secondary-color;
+  border-radius: 1rem;
+  max-width: 80%;
+  border: 1px solid $accent-color;
+  z-index: 1;
+  .arrow-tooltip {
+    background-color: $accent-color;
+  }
+  img {
+    height: 3rem;
+  }
+}
+
+.tooltipcheck {
+  background-color: $main-color;
+  color: $secondary-color;
+  border-radius: 1rem;
+  max-width: 80%;
+  border: 1px solid $win;
+  z-index: 1;
+  .arrow-tooltip {
+    background-color: $accent-color;
+  }
+  img {
+    height: 3rem;
+  }
+}
+
+.returnMap {
+  position: absolute;
+  top: 2.5rem;
+  right: 1rem;
+  font-size: 1rem;
+}
+.returnHome {
+  position: absolute;
+  top: -7rem;
+  left: 1rem;
+}
+button {
+  font-size: 2em;
+  background-color: $secondary-color;
+  color: $accent-color;
+  border-radius: 1.5rem;
+  cursor: pointer;
+}
+
+.buttonTemple {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border-color: $accent-color;
+  background-color: $secondary-color;
+  font-size: 0;
+  animation-name: temple;
+  animation-duration: 3s;
+  img {
+    width: 1rem;
+  }
+}
+.buttonTemple-check {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 3px solid $win;
+  background-color: $secondary-color;
+  font-size: 0;
+  animation-name: temple;
+  animation-duration: 3s;
+  img {
+    width: 1rem;
+  }
+}
+@keyframes temple {
+  0% {
+    opacity: 0;
+  }
+}
+.rulesButton {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border-color: $accent-color;
+  background-color: $secondary-color;
+  position: absolute;
+  top: -7rem;
+  right: 1rem;
+}
+
+.quizz {
+  text-align: center;
+}
+.player {
+  text-align: center;
+}
+
+.answers {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  button {
+    padding: 1em;
+    margin-bottom: 1rem;
+    width: 10rem;
+    font-size: 1rem;
+  }
+}
+
+.Game {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  align-content: space-around;
+  background-image: url(/src/assets/fondTemple.png);
+  background-position: top;
+  background-size: 30rem;
+  background-repeat: no-repeat;
+
+  h1 {
+    margin: 0;
+  }
+}
+.game-over {
+  color: $accent-color;
+  background-color: $secondary-color;
+  border: 3px solid $accent-color;
+  border-radius: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  animation-name: game-over;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.over {
+  animation-name: over;
+  animation-duration: 30s;
+  animation-fill-mode: forwards;
+}
+@keyframes game-over {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes over {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.yokai {
+  text-align: center;
+  margin: 0;
+
+  img {
+    height: 10rem;
+    width: auto;
+  }
+}
+audio {
+  display: none;
+}
+
+.infoQuizz {
+  display: none;
+}
+.player .yokai {
+  h1 {
+    margin: 0;
+  }
+}
+.mapContainer {
+  .fleurs {
+    display: none;
+  }
+  margin-top: 10rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat($grid-map, calc(100% / $grid-map));
+  grid-template-rows: repeat($grid-map, calc(100% / $grid-map));
+  .japonMap {
+    width: 100%;
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+  }
+}
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .templeScore {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    h4 {
+      margin: 0.5rem;
+      text-decoration: underline $accent-color;
+    }
+    p {
+      margin: 0;
+    }
+    figure {
+      border: 1px solid $accent-color;
+      padding: 3rem;
+      padding-bottom: 1rem;
+      padding-top: 0;
+      width: 10rem;
+    }
+    img {
+      height: 5rem;
+    }
+  }
+}
+
+.buttonTemple1 {
+  grid-column-start: 17;
+  grid-row-start: 3;
+}
+
+.buttonTemple2 {
+  grid-column-start: 16;
+  grid-row-start: 8;
+}
+
+.buttonTemple3 {
+  grid-column-start: 15;
+  grid-row-start: 11;
+}
+
+.buttonTemple4 {
+  grid-column-start: 13;
+  grid-row-start: 13;
+}
+
+.buttonTemple5 {
+  grid-column-start: 11;
+  grid-row-start: 15;
+}
+
+.buttonTemple6 {
+  grid-column-start: 7;
+  grid-row-start: 15;
+}
+
+.buttonTemple7 {
+  grid-column-start: 5;
+  grid-row-start: 18;
+}
+.conteneur {
+  padding-top: 5rem;
+  .conteneur-flex {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    margin: -10px;
+    div {
+      flex: 0 25%;
+    }
+  }
+}
+.trashtalk {
+  background-image: url(./assets/bulle.png);
+  padding: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-size: 100% 100%;
+  color: $main-color;
+}
+
+.resetButton {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  margin-left: 1rem;
+  border-radius: 1.5rem;
+  background-color: $accent-color;
+  color: $secondary-color;
+}
+.scoreButton {
+  position: fixed;
+  right: 5rem;
+  bottom: 1rem;
+  margin-left: 1rem;
+  border-radius: 1.5rem;
+  background-color: $accent-color;
+  color: $secondary-color;
+}
+
+.musicButton {
+  position: fixed;
+  right: 4.8rem;
+  bottom: 5rem;
+  margin-left: 1rem;
+  border-radius: 1.5rem;
+  background-color: $accent-color;
+  color: $secondary-color;
+}
+
+.musicButtonMap {
+  position: fixed;
+  right: 1rem;
+  bottom: 5rem;
+  margin-left: 1rem;
+  border-radius: 1.5rem;
+  background-color: $accent-color;
+  color: $secondary-color;
+}
+
+.musicButtonTemple {
+  font-size: 1rem;
+  position: absolute;
+  left: 1rem;
+  top: 2rem;
+  margin-left: 1rem;
+  border-radius: 1.5rem;
+  background-color: $accent-color;
+  color: $secondary-color;
+}
+
+.musicButtonScore {
+  font-size: 1rem;
+  position: absolute;
+  left: 1rem;
+  top: 7rem;
+  margin-left: 1rem;
+  border-radius: 1.5rem;
+  background-color: $accent-color;
+  color: $secondary-color;
+}
+
+.buttonScore {
+  grid-column-start: 15;
+  grid-column-end: 16;
+}
+.buttonClear {
+  grid-column-start: 15;
+  grid-row-start: 15;
+}
+.loading {
+  height: 5rem;
+  background-color: $secondary-color;
+  border-radius: 50%;
+  border: 3px solid $accent-color;
+}
+.win {
+  background-color: #f8e8d8;
+  color: #383637;
+  border-radius: 1rem;
+  border: 5px solid $accent-color;
+  position: fixed;
+  top: 23rem;
+  left: 1rem;
+  right: 1rem;
+  bottom: 8rem;
+  z-index: 3;
+  button {
+    color: $secondary-color;
+    background-color: $main-color;
+    border: 3px solid $accent-color;
+  }
+  p {
+    margin: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.easy-malus {
+  animation-name: malus;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+@keyframes malus {
+  to {
+    filter: blur(0.4rem);
+  }
+}
+.mediummalus {
+  animation-name: mediummalus;
+  animation-duration: 35s;
+  animation-fill-mode: forwards;
+}
+@keyframes mediummalus {
+  to {
+    filter: blur(0.3rem);
+  }
+}
+@media (orientation: landscape) {
+  .musicButtonTemple {
+    font-size: 2rem;
+    top: 1rem;
+  }
+  .musicButtonScore {
+    font-size: 2rem;
+    top: 1rem;
+  }
+  .infoQuizz {
+    display: initial;
+  }
+
+  .musicButton {
+    right: 13rem;
+    bottom: 1rem;
+  }
+  .returnMap {
+    font-size: 2rem;
+    top: 0.5rem;
+  }
+  .buttonTemple {
+    width: 3rem;
+    height: 3rem;
+    img {
+      width: 2rem;
+    }
+  }
+  .buttonTemple-check {
+    width: 3rem;
+    height: 3rem;
+    img {
+      width: 2rem;
+    }
+  }
+  .returnHome {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+  .rulesButton {
+    top: 6rem;
+    right: -3rem;
+  }
+
+  .bulle {
+    padding-left: 55rem;
+  }
+  .trashtalk {
+    background-image: url(./assets/bule.png);
+    padding-top: 1rem;
+    color: $secondary-color;
+  }
+  .yokai {
+    img {
+      height: 15rem;
+      width: auto;
+    }
+  }
+  .Game {
+    background-image: url(/src/assets/fondTemple.png), url(assets/lantern.png),
+      url(assets/lantern2.png);
+    background-position: top, top left, top right;
+    h1 {
+      margin: 0;
+    }
+  }
+  .answers {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    button {
+      padding: 1em;
+      margin-bottom: 1rem;
+      width: 40rem;
+      font-size: 1rem;
+    }
+  }
+  .mapContainer {
+    margin-top: initial;
+    height: 100vh;
+
+    .fleurs {
+      display: initial;
+      position: fixed;
+      width: 35rem;
+      right: 0rem;
+      top: 0rem;
+      z-index: -1;
+    }
+
+    .japonMap {
+      width: auto;
+      height: 100%;
+    }
+  }
+  .score {
+    .templeScore {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      figure {
+        width: 10rem;
+      }
+    }
+  }
+  .resetButton {
+    position: fixed;
+    right: 7rem;
+    left: initial;
+  }
+  .scoreButton {
+    right: 1rem;
+  }
+  .win {
+    top: 25rem;
+    bottom: 4rem;
+    p {
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+  }
+  .conteneur {
+    .conteneur-flex {
+      flex-flow: row wrap;
+    }
+  }
+}
